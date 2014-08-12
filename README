@@ -1,0 +1,53 @@
+Ce script php permet de récupérer les niveaux d'installation de la box Netgear
+
+Contenu
+============
+	
+	voolevels.class.php:
+		Récupère les données depuis le modem/routeur
+		Donne un array avec les résultat:
+		
+		Array
+		(
+		    [downstream] => Array
+			(
+			    [0] => Array
+				(
+				    [status] => Locked
+				    [modulation] => QAM256
+				    [channel] => 57
+				    [symrate] => 5360537 sym/sec
+				    [frequency] => 434000000 Hz
+				    [rx] => -1.9 dBmV
+				    [snr] => 43.1 dBmV
+				    [docsis] => EuroDocsis
+				)
+				[...]
+
+		    [upstream] => Array
+			(
+			    [0] => Array
+				(
+				    [status] => Locked
+				    [modulation] => ATDMA
+				    [channel] => 2
+				    [symrate] => 5120 Ksym/sec
+				    [frequency] => 44200000 Hz
+				    [tx] => 43.7 dBmV
+				)
+				[...]
+	
+	vooconsole.class.php:
+		Formatte l'array de voolevels.class.php pour l'afficher dans une console UNIX
+
+
+Utilisation
+============
+	
+	Modifier voolevels.php pour y mettre le mot de passe de la box
+	$ php voolevels.php
+
+
+Demo
+============
+	Screenshot: https://www.maxux.net/perso/screenshots/12-08-14-160316.png
