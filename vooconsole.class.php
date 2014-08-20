@@ -27,22 +27,56 @@ class VooConsole {
 	}
 	
 	function render() {
-		echo "\e[1;37m==================== Downstream ====================\e[0m\n";
-		$this->title();
+		echo "\e[1;37m========================== Downstream ==========================\e[0m\n";
+		$this->downtitle();
 		
 		foreach($this->data['downstream'] as $value) {
-			$this->info($value, 'rx');
+			$this->downstream($value);
 		}
 		
-		echo "\n\e[1;37m====================  Upstream  ====================\e[0m\n";
-		$this->title();
+		echo "\n\e[1;37m==========================  Upstream  ==========================\e[0m\n";
+		$this->uptitle();
 		
 		foreach($this->data['upstream'] as $value) {
-			$this->info($value, 'tx');
+			$this->upstream($value);
 		}
 	}
 	
-	function title() {
+	//
+	// downstream
+	//
+	function downtitle() {
+		echo "\e[1;36m";
+		
+		printf(
+			"%-15s %-15s %-10s %-10s %-10s\n",
+			'Status',
+			'Modulation',
+			'Channel',
+			'Power',
+			'SNR'
+		);
+		
+		echo "\e[0m";
+	}
+	
+	function downstream($value) {
+		printf(
+			"%s%-15s%s %-15s %-10s %-10s %-10s\n",
+			(($value['status'] == 'Locked') ? "\e[1;32m" : "\e[1;31m"),
+			$value['status'],
+			"\e[0m",
+			$value['modulation'],
+			$value['channel'],
+			$value['rx'],
+			$value['snr']
+		);
+	}
+	
+	//
+	// upstream
+	//
+	function uptitle() {
 		echo "\e[1;36m";
 		
 		printf(
@@ -56,7 +90,7 @@ class VooConsole {
 		echo "\e[0m";
 	}
 	
-	function info($value, $rtx) {
+	function upstream($value) {
 		printf(
 			"%s%-15s%s %-15s %-10s %-10s\n",
 			(($value['status'] == 'Locked') ? "\e[1;32m" : "\e[1;31m"),
@@ -64,7 +98,7 @@ class VooConsole {
 			"\e[0m",
 			$value['modulation'],
 			$value['channel'],
-			$value[$rtx]
+			$value['tx']
 		);
 	}
 }
