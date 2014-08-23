@@ -19,7 +19,7 @@
  * 
  */
  
-include('voolimits.class.php');
+include('common/voolevels.limits.class.php');
 
 class VooConsole extends VooLimits {
 	private $data = null;

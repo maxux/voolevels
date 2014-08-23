@@ -1,6 +1,6 @@
 <?php
-include('voolevels.class.php');
-include('vooconsole.class.php');
+include('common/voolevels.class.php');
+include('console/console.class.php');
 
 $levels = new VooLevels('voo', 'PASSWORD');
 $data = $levels->getArray();
