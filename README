@@ -3,7 +3,7 @@ Ce script php permet de récupérer les niveaux d'installation de la box Netgear
 Contenu
 ============
 	
-	voolevels.class.php:
+	common/voolevels.class.php:
 		Récupère les données depuis le modem/routeur
 		Donne un array avec les résultat:
 		
@@ -37,17 +37,41 @@ Contenu
 				)
 				[...]
 	
-	vooconsole.class.php:
-		Formatte l'array de voolevels.class.php pour l'afficher dans une console UNIX
+	common/voolevels.limits.class.php:
+		Fournis un moyen de savoir si les valeurs données par la ligne sont bonne ou pas
+
+	console/console.class.php:
+		Formate l'array de voolevels.class.php pour l'afficher dans une console UNIX
+		Utilise limits.class.php pour colorer les valeurs
+	
+	console/console.php:
+		Script à appeler pour afficher le tableau dans une console
+	
+
+	html/html.class.php:
+		Formate l'array de voolevels.class.php pour l'afficher dans une page HTML avec boostrap
+		Utilise limits.class.php pour colorer les valeurs
+	
+	html/template.include.html
+		Le template HTML utilisé pour afficher la page
+	
+	html/index.php
+		La page a appeler pour afficher le tableau HTML
 
 
 Utilisation
 ============
 	
-	Modifier voolevels.php pour y mettre le mot de passe de la box
-	$ php voolevels.php
+	Console:
+		Modifier console/console.php pour y mettre le mot de passe de la box
+		$ php console/console.php
+	
+	HTML:
+		Modifier html/index.php pour y mettre le mot de passe de la box
+		Accéder à l'index.php depuis un browser
 
 
 Demo
 ============
-	Screenshot: https://www.maxux.net/perso/screenshots/12-08-14-160316.png
+	Screenshot console: https://www.maxux.net/perso/screenshots/23-08-14-012712.png
+	Page web personnel: https://www.maxux.net/devs/voolevels/
