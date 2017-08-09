@@ -22,7 +22,7 @@
 class VooLevels {
 	private $username = null;
 	private $password = null;
-	private $host     = '192.168.100.1';
+	private $host     = '192.168.0.1';
 	
 	private $tables  = array(
 		0 => 'downstream',
@@ -61,7 +61,7 @@ class VooLevels {
 	
 	function download() {
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'http://'.$this->host.'/VooInstallationLevels.asp');
+		curl_setopt($curl, CURLOPT_URL, 'http://'.$this->host.'/InstallationLevels.htm');
 		curl_setopt($curl, CURLOPT_HEADER, 0);
 		curl_setopt($curl, CURLOPT_USERPWD, $this->username.':'.$this->password);
 		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
